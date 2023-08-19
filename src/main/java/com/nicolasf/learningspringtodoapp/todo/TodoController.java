@@ -28,16 +28,22 @@ public class TodoController {
     }
 
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
-    public String showAddTodoPage() {
+    public String showAddTodoPage(ModelMap model) {
+        model.put("todo", new Todo(
+            0,
+            (String) model.get("name"),
+            "",
+            false, LocalDate.now()
+                ));
         return "todo";
     }
     @RequestMapping(value = "add-todo", method = RequestMethod.POST)
-    public String addNewTodo(@RequestParam String desc, @RequestParam LocalDate dueDate, ModelMap model) {
+    public String addNewTodo(ModelMap model, Todo todo) {
         todoService.addNewTodo(
             (String) model.get("name"),
-            desc,
+            todo.getDesc(),
             false,
-            dueDate
+            todo.getTargetDate()
         );
         return "redirect:list-todos";
     }

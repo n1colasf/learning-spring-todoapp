@@ -8,14 +8,14 @@
 <div class="container">
     <h1>Welcome to the login page</h1>
     <form method="post">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required>
-        <label for="pass">Password:</label>
-        <input type="text" name="pass" id="pass" required>
+        <label class="form-label" for="name">Name:</label>
+        <input type="text"  class="form-control" name="name" id="name" required>
+        <label class="form-label" for="pass">Password:</label>
+        <input type="text"  class="form-control" name="pass" id="pass" required>
         <br>
-        <input type="submit" value="Login">
+        <input class="btn btn-primary w-100" type="submit" value="Login">
         <br>
-        <pre>${errorMessage}</pre>
+        <pre class="mt-3 text-center">${errorMessage}</pre>
     </form>
 </div>
 <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>

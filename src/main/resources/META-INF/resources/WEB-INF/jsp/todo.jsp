@@ -21,7 +21,9 @@
             <label for="dueDate" class="form-label">Due Date</label>
             <form:input type="date" name="dueDate" class="form-control" id="dueDate" placeholder="Enter Due Date" required="required" path="targetDate"></form:input>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary mb-3">Submit</button>
+        <br>
+        <form:errors cssClass="text-primary" path="desc"></form:errors>
     </form:form>
 </div>
 <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>

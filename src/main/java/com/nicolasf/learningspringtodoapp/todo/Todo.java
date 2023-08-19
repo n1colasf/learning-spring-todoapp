@@ -2,18 +2,19 @@ package com.nicolasf.learningspringtodoapp.todo;
 
 import java.time.LocalDate;
 
+
 public class Todo {
     private int id;
     private String user;
     private String desc;
-    private boolean isDone;
+    private boolean done;
     private LocalDate targetDate;
 
-    public Todo(int id, String user, String desc, boolean isDone, LocalDate targetDate) {
+    public Todo(int id, String user, String desc, boolean done, LocalDate targetDate) {
         this.id = id;
         this.user = user;
         this.desc = desc;
-        this.isDone = isDone;
+        this.done = done;
         this.targetDate = targetDate;
     }
 
@@ -37,10 +38,10 @@ public class Todo {
         this.desc = desc;
     }
     public boolean isDone() {
-        return isDone;
+        return done;
     }
     public void setDone(boolean done) {
-        isDone = done;
+        done = done;
     }
     public LocalDate getTargetDate() {
         return targetDate;
@@ -55,7 +56,7 @@ public class Todo {
                 "id=" + id +
                 ", user='" + user + '\'' +
                 ", desc='" + desc + '\'' +
-                ", isDone=" + isDone +
+                ", isDone=" + done +
                 ", targetDate=" + targetDate +
                 '}';
     }

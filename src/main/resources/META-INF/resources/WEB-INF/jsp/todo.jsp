@@ -8,11 +8,11 @@
     <form:form method="post" modelAttribute="todo">
         <div class="mb-3">
             <fieldset>
-                <form:label path="desc" class="form-label">Description</form:label>
-                <form:input type="text" name="desc" class="form-control" id="desc" placeholder="Enter Description" required="required" path="desc"></form:input>
+                <form:label path="description" class="form-label">Description</form:label>
+                <form:input type="text" name="description" class="form-control" id="description" placeholder="Enter Description" required="required" path="description"></form:input>
             </fieldset>
         </div>
-            <form:input type="hidden" name="done" class="form-control" id="done" placeholder="Enter Description" path="done"></form:input>
+            <form:input type="hidden" name="done" class="form-control" id="done" path="isDone"></form:input>
             <form:input type="hidden" name="id" class="form-control" id="id" placeholder="Id" path="id"></form:input>
         <div class="mb-3">
             <form:label path="targetDate" class="form-label">Due Date</form:label>
@@ -20,7 +20,7 @@
         </div>
         <button type="submit" class="btn btn-primary mb-3">Submit</button>
         <br>
-        <form:errors cssClass="text-primary" path="desc"></form:errors>
+        <form:errors cssClass="text-primary" path="description"></form:errors>
     </form:form>
 </div>
 <%@ include file="common/footer.jspf" %>

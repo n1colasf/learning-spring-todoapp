@@ -20,8 +20,8 @@
     <tbody>
         <c:forEach items="${todos}" var="todo">
             <tr>
-                <td>${todo.desc}</td>
-                <td>${todo.done}</td>
+                <td>${todo.description}</td>
+                <td>${todo.isDone}</td>
                 <td>${todo.targetDate}</td>
                 <td><a href="/update-todo?id=${todo.id}" class="btn btn-sm btn-outline-dark">EDIT</a></td>
                 <td><a href="/delete-todo?id=${todo.id}" class="btn btn-sm btn-danger">DELETE</a></td>

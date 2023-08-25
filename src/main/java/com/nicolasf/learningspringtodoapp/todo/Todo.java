@@ -13,20 +13,19 @@ public class Todo {
     private int id;
     private String username;
     @Size(min = 10, message = "Enter at least 10 characters")
-    private String desc;
-    private boolean done;
+    private String description;
+    private boolean isDone;
     private LocalDate targetDate;
 
-    public Todo(int id, String username, String desc, boolean done, LocalDate targetDate) {
+    public Todo(int id, String username, String description, boolean isDone, LocalDate targetDate) {
         this.id = id;
         this.username = username;
-        this.desc = desc;
-        this.done = done;
+        this.description = description;
+        this.isDone = isDone;
         this.targetDate = targetDate;
     }
 
     public Todo() {
-        super();
     }
 
     public int getId() {
@@ -36,23 +35,23 @@ public class Todo {
     public void setId(int id) {
         this.id = id;
     }
-    public String getUser() {
+    public String getUsername() {
         return username;
     }
-    public void setUser(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
-    public boolean isDone() {
-        return done;
+    public boolean getIsDone() {
+        return isDone;
     }
-    public void setDone(boolean done) {
-        this.done = done;
+    public void setIsDone(boolean isDone) {
+        this.isDone = isDone;
     }
     public LocalDate getTargetDate() {
         return targetDate;
@@ -66,8 +65,8 @@ public class Todo {
         return "Todo{" +
                 "id=" + id +
                 ", user='" + username + '\'' +
-                ", desc='" + desc + '\'' +
-                ", isDone=" + done +
+                ", description='" + description + '\'' +
+                ", isDone=" + isDone +
                 ", targetDate=" + targetDate +
                 '}';
     }

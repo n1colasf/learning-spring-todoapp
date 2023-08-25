@@ -10,7 +10,6 @@ import java.util.function.Predicate;
 
 @Service
 public class TodoService {
-
     private static List<Todo> todos = new ArrayList<>();
     private static int todoCount = 0;
     static {
@@ -23,18 +22,18 @@ public class TodoService {
 
     }
 
-    public List<Todo> findByUser(String username) {
-        Predicate<? super Todo> predicate = todo -> todo.getUser().equals(username);
+    public List<Todo> findByUsername(String username) {
+        Predicate<? super Todo> predicate = todo -> todo.getUsername().equals(username);
         return todos.stream()
             .filter(predicate)
             .toList();
     }
 
-    public void addNewTodo(String username, String desc, boolean isDone, LocalDate targetDate) {
+    public void addNewTodo(String username, String description, boolean isDone, LocalDate targetDate) {
         todos.add(new Todo(
             ++todoCount,
             username,
-            desc,
+            description,
             isDone,
             targetDate
         ));

@@ -1,6 +1,8 @@
 package com.nicolasf.learningspringtodoapp.todo;
 
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import java.time.LocalDate;
 import java.util.List;
 
-@Controller
+@Controller //-> with this commented, it will be ignored by Spring, and the other JPA controller will be used
 @SessionAttributes("name")
 public class TodoController {
 
@@ -24,16 +26,22 @@ public class TodoController {
 
     @RequestMapping(value = "list-todos")
     public String listAllTodos(ModelMap model) {
-        List<Todo> todos = todoService.findByUser("nicolas");
+        String userName = getLoggedInUsername(model);
+        List<Todo> todos = todoService.findByUser(userName);
         model.addAttribute("todos", todos);
         return "listTodos";
+    }
+
+    private static String getLoggedInUsername(ModelMap model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
     }
 
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
     public String showAddTodoPage(ModelMap model) {
         model.put("todo", new Todo(
             0,
-            (String) model.get("name"),
+                getLoggedInUsername(model),
             "",
             false, LocalDate.now()
                 ));
@@ -45,7 +53,7 @@ public class TodoController {
            return "todo";
        }
         todoService.addNewTodo(
-            (String) model.get("name"),
+                getLoggedInUsername(model),
             todo.getDesc(),
             false,
             todo.getTargetDate()

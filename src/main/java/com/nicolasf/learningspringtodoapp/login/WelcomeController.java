@@ -1,5 +1,7 @@
 package com.nicolasf.learningspringtodoapp.login;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +26,7 @@ public class WelcomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String goToWelcomePage(ModelMap model) { //goToLogin(@RequestParam String name, ModelMap model) {
-        model.put("name", "nicolas");
+        model.put("name", getLoggedInUserName());
         // could be logger.info, logger.warn, logger.error
         //logger.debug("Request param is {}", name); // use a logger for displaying  messages
         //System.out.println("Request param is " + name); // NOT RECOMMENDED FOR PRODUCTION
@@ -42,4 +44,9 @@ public class WelcomeController {
         return "login";
     }
     */
+
+    private String getLoggedInUserName() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
+    }
 }
